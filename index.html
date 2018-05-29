@@ -4,27 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>万能收款码</title>
+    <title>聚合收款码</title>
 
     <script>
     var setting = {
-        // 在以下双引号中粘贴QQ钱包收款链接
-        qqUrl: "https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&a=1&u=29422355&ac=6B3276DECCACD8D155B16C8DC14BB8796FC09DE5E45926458ED8AC93E0F9BF80&n=L%E5%8F%94&f=wallet",
+        // 在以下双引号中粘贴 QQ 钱包收款链接
+        // 示例：https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&a=1&u=29422355&ac=6B3276DECCACD8D155B16C8DC14BB8796FC09DE5E45926458ED8AC93E0F9BF80&n=L%E5%8F%94&f=wallet
+        qqUrl: "",
 
         // 在以下双引号中粘贴微信收款链接
-        wechatUrl: "https://wx.tenpay.com/f2f?t=AQAAAH3frlMzik%2BU5xs7OGiqnn4%3D",
+        // 示例：https://wx.tenpay.com/f2f?t=AQAAAH3frlMzik%2BU5xs7OGiqnn4%3D
+        wechatUrl: "",
 
         // 在以下双引号中粘贴支付宝收款链接
-        aliUrl: "https://qr.alipay.com/ape6a9t44md465r81f",
+        // 示例：https://qr.alipay.com/ape6a9t44md465r81f
+        aliUrl: "",
 
-        // 用于动态生成二维码的API，不需要修改。
-        qrcodeApi: "https://pan.baidu.com/share/qrcode?w=150&h=150&url="
+        // 用于动态生成二维码的 API，不需要修改。
         /*
-        备用二维码api:
-        http://qr.liantu.com/api.php?text=
-        https://www.kuaizhan.com/common/encode-png?large=true&data=
-        https://pan.baidu.com/share/qrcode?w=150&h=150&url=
+            备用二维码 API:
+            http://qr.liantu.com/api.php?text=
+            https://www.kuaizhan.com/common/encode-png?large=true&data=
+            https://pan.baidu.com/share/qrcode?w=150&h=150&url=
         */
+        qrcodeApi: "https://pan.baidu.com/share/qrcode?w=150&h=150&url="
+
     }
     </script>
 
@@ -91,7 +95,7 @@
 
 </head>
 <body>
-    <!-- 万能收款码展示区域 -->
+    <!-- 聚合收款码展示区域 -->
     <div class="code-item" id="code-all">
         <!-- <div class="code-title"></div> -->
         <div class="code-area">
@@ -100,7 +104,7 @@
         <div class="code-footer">支付宝、微信、QQ 扫码支付</div>
     </div>
 
-    <!-- QQ钱包二维码展示区域 -->
+    <!-- QQ 钱包二维码展示区域 -->
     <div class="code-item" id="code-qq">
         <!-- <div class="code-title"></div> -->
         <div class="code-area">
@@ -131,13 +135,13 @@
         document.getElementById("qq-url").src = setting.qrcodeApi + urlEncode(setting.qqUrl);
         document.getElementById("code-qq").style.display = "block";
     } else {
-        // 其它，显示“万能码”
+        // 其它，显示「聚合码」
         document.getElementById("page-url").src = setting.qrcodeApi + urlEncode(window.location.href);
         document.getElementById("code-all").style.display = "block";
     }
 
     /*****************************************
-     * url编码函数
+     * url 编码函数
      * 输入参数：待编码的字符串
      * 输出参数：编码好的
      ****************************************/
@@ -145,6 +149,5 @@
         return encodeURIComponent(String).replace(/'/g,"%27").replace(/"/g,"%22");
     }
     </script>
-
 </body>
 </html>
